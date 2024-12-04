@@ -1,4 +1,4 @@
-package com.tinqin.library.reporting.createrecord;
+package com.tinqin.library.reporting.operations.postevent;
 
 import com.tinqin.library.reporting.base.ProcessorOutput;
 import java.util.UUID;
@@ -11,8 +11,7 @@ import lombok.ToString;
 @Builder
 @ToString
 @Getter
-public class CreateRecordOutput implements ProcessorOutput {
+public class CreateEventOutput implements ProcessorOutput {
 
-  private UUID recordId;
-
+  private UUID eventId;
 }
