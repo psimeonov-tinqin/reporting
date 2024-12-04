@@ -1,8 +1,8 @@
 package com.tinqin.library.reporting.processors;
 
-import com.tinqin.library.reporting.createrecord.CreateRecord;
-import com.tinqin.library.reporting.createrecord.CreateRecordInput;
-import com.tinqin.library.reporting.createrecord.CreateRecordOutput;
+import com.tinqin.library.reporting.operations.createrecord.CreateRecord;
+import com.tinqin.library.reporting.operations.createrecord.CreateRecordInput;
+import com.tinqin.library.reporting.operations.createrecord.CreateRecordOutput;
 import com.tinqin.library.reporting.errorhandler.base.ErrorHandler;
 import com.tinqin.library.reporting.errors.OperationError;
 import com.tinqin.library.reporting.persistence.models.Record;
@@ -32,7 +32,6 @@ public class CreateRecordProcessor implements CreateRecord {
   private CreateRecordOutput saveRecord(CreateRecordInput input) {
     Record record = Record
         .builder()
-        .id(UUID.randomUUID())
         .isDeleted(false)
         .isClosed(false)
         .eventsList(List.of())
