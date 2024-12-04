@@ -74,15 +74,20 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>flatten-maven-plugin</artifactId>
-        <version>1.2.7</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.0.0</version>
         <executions>
           <execution>
+            <id>enforce</id>
             <goals>
-              <goal>flatten</goal>
+              <goal>enforce</goal>
             </goals>
-            <phase>process-resources</phase>
+            <configuration>
+              <rules>
+                <dependencyConvergence />
+              </rules>
+            </configuration>
           </execution>
         </executions>
       </plugin>

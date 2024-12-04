@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -29,7 +31,8 @@ public class Event {
   @Column(name = "id", nullable = false)
   private UUID id;
 
- @Column(name = "fields")
+  @OneToMany
+  @JoinColumn(name = "event_id")
   private List<EventField> fields;
 
   @Column(name = "created_at", nullable = false)
