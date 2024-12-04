@@ -1,4 +1,4 @@
-package com.tinqin.library.reporting.createrecord;
+package com.tinqin.library.reporting.operations.createrecord;
 
 import com.tinqin.library.reporting.base.ProcessorInput;
 import lombok.AllArgsConstructor;
