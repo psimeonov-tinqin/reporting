@@ -1,6 +1,7 @@
 package com.tinqin.library.reporting.persistence.models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,5 +42,6 @@ public class Record {
   private Boolean isDeleted;
 
   @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER, mappedBy = "record")
+  @JsonManagedReference
   private List<Event> eventsList = new ArrayList<>();
 }

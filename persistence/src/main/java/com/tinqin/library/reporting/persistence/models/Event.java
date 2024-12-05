@@ -1,5 +1,6 @@
 package com.tinqin.library.reporting.persistence.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -41,5 +42,6 @@ public class Event {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "record_id")
+  @JsonBackReference
   private Record record;
 }
