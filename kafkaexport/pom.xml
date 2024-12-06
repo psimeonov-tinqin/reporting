@@ -9,8 +9,15 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>domain</artifactId>
-  <version>${revision}</version>
-  <name>domain</name>
+  <artifactId>kafkaexport</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.tinqin.library.reporting</groupId>
+      <artifactId>api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
 
 </project>

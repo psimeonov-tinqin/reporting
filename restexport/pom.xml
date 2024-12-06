@@ -6,10 +6,12 @@
   <parent>
     <groupId>com.tinqin.library.reporting</groupId>
     <artifactId>reporting</artifactId>
-    <version>${revision}</version>
+    <version>0.0.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>restexport</artifactId>
+  <version>${revision}</version>
+<name>restexport</name>
 
   <dependencies>
     <dependency>

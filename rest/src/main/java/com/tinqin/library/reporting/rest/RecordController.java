@@ -37,8 +37,6 @@ public class RecordController extends BaseController {
   }
 
 
-
-
  @PostMapping(ApiRoutes.POST_RECORD)
   public ResponseEntity<?> createRecord(CreateRecordInput input) {
 
