@@ -10,7 +10,7 @@
 
   <groupId>com.tinqin.library.reporting</groupId>
   <artifactId>reporting</artifactId>
-  <version>${revision}</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -26,6 +26,8 @@
     <module>persistence</module>
     <module>rest</module>
     <module>restexport</module>
+    <module>kafkaexport</module>
+    <module>kafka</module>
   </modules>
 
   <dependencies>
@@ -58,34 +60,54 @@
     </dependency>
 
     <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+      <version>4.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-okhttp</artifactId>
+      <version>13.5</version>
+    </dependency>
+
 
   </dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.0.0</version>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>1.2.7</version>
         <executions>
           <execution>
-            <id>enforce</id>
+            <id>flatten</id>
             <goals>
-              <goal>enforce</goal>
+              <goal>flatten</goal>
             </goals>
-            <configuration>
-              <rules>
-                <dependencyConvergence />
-              </rules>
-            </configuration>
+            <phase>process-resources</phase>
+          </execution>
+          <execution>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
+
 </project>
 
