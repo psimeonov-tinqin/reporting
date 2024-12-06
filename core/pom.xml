@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.tinqin.library.reporting</groupId>
     <artifactId>reporting</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
   </parent>
 
   <artifactId>core</artifactId>
@@ -14,8 +14,14 @@
   <dependencies>
     <dependency>
       <groupId>${project.parent.groupId}</groupId>
-      <artifactId>api</artifactId>
+      <artifactId>apiadapter</artifactId>
       <version>${revision}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>${project.parent.groupId}</groupId>
+          <artifactId>api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>

@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.tinqin.library.reporting</groupId>
     <artifactId>reporting</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
   </parent>
 
   <artifactId>rest</artifactId>
@@ -14,8 +14,8 @@
   <dependencies>
     <dependency>
       <groupId>${project.parent.groupId}</groupId>
-      <artifactId>core</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <artifactId>apiadapter</artifactId>
+      <version>${revision}</version>
     </dependency>
 
     <dependency>
@@ -40,6 +40,17 @@
               <artifactId>lombok</artifactId>
             </exclude>
           </excludes>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <annotationProcessors>
+            <annotationProcessor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</annotationProcessor>
+            <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>
+          </annotationProcessors>
         </configuration>
       </plugin>
     </plugins>

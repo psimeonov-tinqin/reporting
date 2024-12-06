@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.tinqin.library.reporting</groupId>
     <artifactId>reporting</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
   </parent>
 
   <artifactId>api</artifactId>
@@ -14,10 +14,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
+
     <dependency>
-      <groupId>com.tinqin.library.reporting</groupId>
+      <groupId>${project.parent.groupId}</groupId>
       <artifactId>persistence</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>${revision}</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
