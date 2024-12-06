@@ -1,4 +1,4 @@
-package com.tinqin.library.reporting.core.processors;
+package com.tinqin.library.reporting.core;
 
 import com.tinqin.library.reporting.apiadapter.errors.OperationError;
 import com.tinqin.library.reporting.apiadapter.models.ReportingRecord;
