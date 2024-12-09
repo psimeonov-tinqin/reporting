@@ -1,10 +1,10 @@
 package com.tinqin.library.reporting.rest;
 
-import com.tinqin.library.reporting.ApiRoutes;
-import com.tinqin.library.reporting.errors.OperationError;
-import com.tinqin.library.reporting.operations.postevent.CreateEvent;
-import com.tinqin.library.reporting.operations.postevent.CreateEventInput;
-import com.tinqin.library.reporting.operations.postevent.CreateEventOutput;
+import com.tinqin.library.reporting.api.ApiRoutes;
+import com.tinqin.library.reporting.api.models.ApiError;
+import com.tinqin.library.reporting.api.operations.postevent.CreateEventInput;
+import com.tinqin.library.reporting.api.operations.postevent.CreateEventOutput;
+import com.tinqin.library.reporting.apiadapter.ApiAdapter;
 import io.vavr.control.Either;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,15 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class EventController extends BaseController {
 
-  private final CreateEvent createEvent;
+    private final ApiAdapter apiAdapter;
 
 
-  @PostMapping(ApiRoutes.POST_EVENT)
-  public ResponseEntity<?> createEvent(CreateEventInput input) {
+    @PostMapping(ApiRoutes.POST_EVENT)
+    public ResponseEntity<?> createEvent(CreateEventInput input) {
+        Either<ApiError, CreateEventOutput> event = apiAdapter.createEvent(input);
 
-    Either<OperationError, CreateEventOutput> result = createEvent.process(input);
-
-    return mapToResponseEntity(result, HttpStatus.CREATED);
-  }
+        return mapToResponseEntity(event, HttpStatus.CREATED);
+    }
 
 }
