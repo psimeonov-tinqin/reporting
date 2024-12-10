@@ -1,13 +1,11 @@
 package com.tinqin.library.reporting.api.operations.createrecord;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.UUID;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @ToString
 @Getter
