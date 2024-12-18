@@ -9,37 +9,40 @@ import com.tinqin.library.reporting.persistence.models.Record;
 import com.tinqin.library.reporting.persistence.repositories.RecordRepository;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class CreateRecordProcessor implements CreateRecord {
 
-    private final ErrorHandler errorHandler;
-    private final RecordRepository recordRepository;
+  private final ErrorHandler errorHandler;
+  private final RecordRepository recordRepository;
 
-    @Override
-    public Either<OperationError, ReportingCreateRecordOutput> process(ReportingCreateRecordInput input) {
-        return Try.of(() -> saveRecord(input))
-                .toEither()
-                .mapLeft(errorHandler::handle);
-    }
 
-    private ReportingCreateRecordOutput saveRecord(ReportingCreateRecordInput input) {
-        Record record = Record
-                .builder()
-                .isDeleted(false)
-                .isClosed(false)
-                .eventsList(List.of())
-                .build();
+  @Override
+  public Either<OperationError, ReportingCreateRecordOutput> process(
+      ReportingCreateRecordInput input) {
+    return Try.of(() -> saveRecord(input))
+        .toEither()
+        .mapLeft(errorHandler::handle);
+  }
 
-        recordRepository.save(record);
-        return ReportingCreateRecordOutput.builder()
-                .recordId(record.getId())
-                .build();
-    }
+  private ReportingCreateRecordOutput saveRecord(ReportingCreateRecordInput input) {
+    Record record = Record
+        .builder()
+        .isDeleted(false)
+        .isClosed(false)
+        .objectType(input.getObjectType())
+        .objectId(input.getObjectId())
+        .eventsList(List.of())
+        .build();
+
+    recordRepository.save(record);
+    return ReportingCreateRecordOutput.builder()
+        .recordId(record.getId())
+        .build();
+  }
 }
 

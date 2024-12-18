@@ -41,6 +41,13 @@ public class Record {
   @Column(name = "is_deleted")
   private Boolean isDeleted;
 
+  @Column(name = "object_id")
+  private String objectId;
+
+  @Column(name = "object_type")
+  private String objectType;
+
+
   @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER, mappedBy = "record")
   @JsonManagedReference
   private List<Event> eventsList = new ArrayList<>();

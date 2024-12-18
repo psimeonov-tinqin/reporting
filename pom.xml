@@ -29,6 +29,8 @@
     <module>rest</module>
     <module>restexport</module>
     <module>api-adapter</module>
+    <module>kafkaexport</module>
+    <module>kafka</module>
   </modules>
 
   <dependencies>
@@ -55,6 +57,11 @@
     </dependency>
 
     <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
       <version>${swagger.version}</version>
@@ -66,6 +73,35 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+
+  <build>
+  <plugins>
+  <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>flatten-maven-plugin</artifactId>
+    <version>1.2.7</version>
+    <configuration>
+    </configuration>
+    <executions>
+      <execution>
+        <id>flatten</id>
+        <phase>process-resources</phase>
+        <goals>
+          <goal>flatten</goal>
+        </goals>
+      </execution>
+      <execution>
+        <id>flatten.clean</id>
+        <phase>clean</phase>
+        <goals>
+          <goal>clean</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+  </plugins>
+  </build>
 
 </project>
 
